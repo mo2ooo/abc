@@ -1,0 +1,53 @@
+app-login {
+  ion-content {
+    //--background: url('../../../assets/img/home/login.jpg') no-repeat center center !important;
+    --background: url('../../../assets/img/home/login.jpg') !important;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  ion-row {
+    background: transparent !important;
+    margin: 8px !important;
+  }
+
+  .logo {
+    width: 120px;
+    margin-top: 20px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  ion-card {
+    --background: #ffff0057 !important;
+  }
+
+  ion-item {
+    border-radius: 10px;
+    padding: 10px;
+    --border-color: white !important;
+  }
+
+  .slide-top {
+    -webkit-animation: slide-in-blurred-top 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0.1s both;
+    animation: slide-in-blurred-top 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0.1s both;
+  }
+
+  .slide1 {
+    -webkit-animation: slide-in-blurred-bottom 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    animation: slide-in-blurred-bottom 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  }
+
+  .slide2 {
+    -webkit-animation: slide-in-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+  .slide3 {
+    -webkit-animation: slide-in-bottom 1.1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-bottom 1.1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+}

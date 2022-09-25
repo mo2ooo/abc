@@ -1,0 +1,14 @@
+app-address-list {
+  ion-content {
+    --background: var(--my-custom-background);
+  }
+
+  ion-item {
+    --border-color: var(--my-custom-border);
+    --background: transparent;
+  }
+
+  ion-label {
+    color: var(--my-custom-title) !important;
+  }
+}

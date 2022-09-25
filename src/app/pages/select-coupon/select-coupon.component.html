@@ -1,0 +1,30 @@
+<ion-content class="ion-no-padding">
+    <ion-card>
+        <ion-card-content class="ion-no-padding">
+            <ion-radio-group [(ngModel)]="selectCoupon">
+                <ion-item lines="none" *ngFor="let c of gList">
+                    <ion-radio [value]="c.id"></ion-radio>
+                    <ion-label class="ion-padding-start">
+                        <h2 class="title ion-text-wrap">{{c?.name}}</h2>
+                    </ion-label>
+                    <ion-label class="ion-padding-start">
+                        <p class="price">{{c?.discountAmount}}</p>
+                    </ion-label>
+                    <ion-label class="ion-padding-start">
+                        <p class="title">{{c?.amount}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-radio-group>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <ion-row>
+        <ion-col class="ion-no-margin ion-no-padding" size="6">
+            <ion-button expand="block" color="medium" (click)="dismiss()">Cancel</ion-button>
+        </ion-col>
+        <ion-col class="ion-no-margin ion-no-padding" size="6">
+            <ion-button expand="block" color="danger" (click)="onFilter()">Ok</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

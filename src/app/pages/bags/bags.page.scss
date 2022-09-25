@@ -1,0 +1,40 @@
+app-bags {
+  ion-content {
+    --background: var(--my-custom-background);
+  }
+
+  ion-thumbnail {
+    width: 100px;
+    height: auto;
+    padding: 8px;
+  }
+
+  .bottom-box {
+    position: absolute;
+    bottom: 0px;
+    right: 8px;
+    z-index: 1000;
+  }
+
+  ion-label {
+    h2 {
+      color: var(--my-custom-title);
+      font-size: 15px !important;
+    }
+
+    p {
+      color: var(--my-custom-label) !important;
+      font-size: 1rem !important;
+    }
+  }
+
+  .am-stepper-handler {
+    border: 1px solid #e0b500 !important;
+    color: #e0b500 !important;
+  }
+
+  app-img-skeleton {
+    min-height: 125px;
+
+  }
+}

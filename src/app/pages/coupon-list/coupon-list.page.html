@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Discount list</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ng-template [ngIf]="gList" [ngIfElse]="load">
+        <ion-card *ngFor="let coupon of gList;let i=index" color="light"
+                  [ngStyle]="{'animation': animation(i)}">
+            <ion-card-title class="ion-text-center c-title">{{coupon?.name}}
+                <ion-buttons class="ion-float-right">
+                    <ion-button routerLink="/pages/coupon/{{coupon?.id}}">
+                        <ion-icon name="eye" slot="icon-only" color="success"></ion-icon>
+                    </ion-button>
+                    <ion-button (click)="onTake(coupon.id)">
+                        <ion-icon slot="icon-only" name="hand"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+            </ion-card-title>
+            <ion-card-content>
+                <ion-text>{{coupon?.desc}}</ion-text>
+                <ion-card-subtitle class="ion-float-right">
+                    <ion-text>{{coupon?.beginDate}}-{{coupon?.endDate}}</ion-text>
+                </ion-card-subtitle>
+            </ion-card-content>
+
+        </ion-card>
+    </ng-template>
+    <ng-template #load>
+        <app-skeleton rows="6"></app-skeleton>
+    </ng-template>
+</ion-content>

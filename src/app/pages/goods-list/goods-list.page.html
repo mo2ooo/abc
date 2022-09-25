@@ -1,0 +1,141 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="toggle()">
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-row class="search safe" [class.active1]="isActive">
+            <ion-item lines="none" class="ion-no-padding" style="width: 100%">
+                <ion-button fill="clear" class="btn-b" (click)="toggle()">
+                    <ion-icon color="primary" name="md-arrow-back" size="large"></ion-icon>
+                </ion-button>
+                <ion-searchbar color="light" class="ion-no-padding ion-no-margin"
+                               (ionInput)="search($event)"></ion-searchbar>
+            </ion-item>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Pull to refresh"
+                refreshingText="loading...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <app-skeleton [rows]="6" *ngIf="!cateList"></app-skeleton>
+
+    <ion-segment [(ngModel)]="selectCate" color="secondary" (ionChange)="segmentChanged($event)">
+        <ion-segment-button *ngFor="let cate of cateList" [value]="cate.id">
+            <ion-label>{{cate.name}}</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+    <div class="container">
+        <!--        left cate-->
+        <div class="cate-left">
+            <div class="cate-left-item"
+                 *ngFor="let cate of subList;let i=index" (click)="onSelect(cate?.id)"
+                 [classList]="['cate-left-item scale-in-center']" [ngStyle]="{'animation-delay':(i + 1) * 0.2+'s'}"
+                 [class.selected]="cate?.id===selectedSubCate">
+                <ng-template [ngIf]="cate?.id===selectedSubCate" [ngIfElse]="noSelected">
+                    <span>{{cate?.name}}</span>
+                    <i class="selected-line"></i>
+                </ng-template>
+                <ng-template #noSelected>
+                    <span>{{cate?.name}}</span>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="cate-right">
+            <div>
+                <ion-row class="row">
+                    <ng-template [ngIf]="isDetail" [ngIfElse]="listTemplate">
+                        <ion-col size="12" *ngFor="let good of list;let i=index"
+                                 routerLink="/pages/goods-detail/{{good?.id}}">
+                            <div>
+                                <ion-item lines="none" class="ion-no-padding">
+                                    <ion-thumbnail class="ion-no-padding">
+                                        <app-img-skeleton [src]="good?.img" [className]="animationClass"
+                                                          [ngStyle]="{'animation-delay':(i + 1) * 0.2+'s'}"
+                                        ></app-img-skeleton>
+                                    </ion-thumbnail>
+                                    <ion-label class="ion-no-margin ion-text-wrap">
+                                        <div class="box2">
+                                            <ion-buttons>
+                                                <ion-button class="btn-size"
+                                                            *ngFor="let size of good.hasOwnProperty('size')? good.size.split(','):['S'];let i=index"
+                                                            [class.active]="good.selectSizeIndex===i"
+                                                            (click)="onSelectSize($event,good,i,size)">
+                                                    {{size}}
+                                                </ion-button>
+                                            </ion-buttons>
+                                        </div>
+                                        <h3 class="title1">{{good?.name}}</h3>
+                                        <div class="box1">
+                                            <p class="sale ion-float-left">${{good?.price}}</p>
+                                            <ion-icon src="assets/img/myicon/bag1.svg" class="ion-float-right"
+                                                      size="large"
+                                                      color="danger"
+                                                      (click)="addCart($event,good)"></ion-icon>
+                                        </div>
+                                    </ion-label>
+                                </ion-item>
+                            </div>
+                        </ion-col>
+                    </ng-template>
+                    <ng-template #listTemplate>
+                        <ion-col size="5.6" *ngFor="let good of list;let i=index"
+                                 routerLink="/pages/goods-detail/{{good?.id}}">
+                            <div>
+                                <ion-card class="ion-no-padding ion-no-margin">
+                                    <app-img-skeleton [src]="good?.img" [className]="animationClass"
+                                                      [ngStyle]="{'animation-delay':(i + 1) * 0.2+'s'}"
+                                    ></app-img-skeleton>
+                                    <p class="title">{{good?.name}}</p>
+                                    <div class="box">
+                                        <p class="sale">${{good?.price}}</p>
+                                        <ion-icon src="assets/img/myicon/bag1.svg" class="ion-float-right"
+                                                  size="large"
+                                                  color="danger"
+                                                  (click)="addCart($event,good)"></ion-icon>
+                                    </div>
+                                    <div class="box">
+                                        <ion-buttons>
+                                            <ion-button class="btn-size"
+                                                        *ngFor="let size of good.hasOwnProperty('size')? good.size.split(','):['S'];let i=index"
+                                                        [class.active]="good.selectSizeIndex===i"
+                                                        (click)="onSelectSize($event,good,i,size)">
+                                                {{size}}
+                                            </ion-button>
+                                        </ion-buttons>
+                                    </div>
+                                </ion-card>
+                            </div>
+                        </ion-col>
+                    </ng-template>
+                </ion-row>
+            </div>
+        </div>
+    </div>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+        <ion-fab-button color="light">
+            <ng-template [ngIf]="isDetail" [ngIfElse]="noDetail">
+                <ion-icon src="assets/img/myicon/table.svg" color="tertiary" size="large"
+                          (click)="isDetail=!isDetail"></ion-icon>
+            </ng-template>
+            <ng-template #noDetail>
+                <ion-icon src="assets/img/myicon/list.svg" color="tertiary" size="large"
+                          (click)="isDetail=!isDetail"></ion-icon>
+            </ng-template>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

@@ -1,0 +1,12 @@
+app-favorite-list {
+  ion-content {
+    --background: var(--my-custom-background);
+  }
+
+  ion-col {
+    img {
+      border-radius: 8px;
+      height: auto !important;
+    }
+  }
+}

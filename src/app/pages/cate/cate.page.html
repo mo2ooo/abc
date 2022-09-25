@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>cate</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="container">
+        <!--        left cate-->
+        <div class="cate-left">
+            <div class="cate-left-item" [class.selected]="cate?.id===selectedCate"
+                 *ngFor="let cate of cateList" (click)="onSelect(cate?.id)">
+                <ng-template [ngIf]="cate?.id===selectedCate" [ngIfElse]="noSelected">
+                    <span>{{cate?.name}}</span>
+                    <i class="selected-line"></i>
+                </ng-template>
+                <ng-template #noSelected>
+                    <span>{{cate?.name}}</span>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="cate-right">
+            <div>
+                <ion-row class="ion-margin">
+                    <ion-col class="ion-no-padding" size="5.5" *ngFor="let item of subList;let i=index"
+                             routerLink="/pages/goods-list/{{item?.id}}"
+                             [ngStyle]="{'margin-bottom': '10px','animation': animation(i)}">
+                        <ion-thumbnail>
+                            <img [src]="item?.img">
+                        </ion-thumbnail>
+                        <ion-label>
+                            <p class="ion-text-center">{{item?.name}}</p>
+                        </ion-label>
+                    </ion-col>
+                </ion-row>
+
+            </div>
+        </div>
+    </div>
+</ion-content>

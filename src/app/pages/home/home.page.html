@@ -1,0 +1,86 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            <img src="assets/img/home/logo.png" class="logo">
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button *ngIf="!authService.isAuthenticated" (click)="onLogin()">
+                <ion-icon slot="icon-only" name="md-person"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Pull to refresh"
+                refreshingSpinner="circles"
+                refreshingText="loading...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <app-img-skeleton *ngIf="!bannerList" class="banner-placeholder"></app-img-skeleton>
+    <ion-slides pager="true">
+        <ion-slide *ngFor="let item of bannerList">
+            <img [src]="item?.img"/>
+        </ion-slide>
+    </ion-slides>
+    <NoticeBar [option]="{'content':notice, 'icon': icon}">
+        <ng-template #icon>
+            <ion-icon src="assets/img/myicon/notice.svg" size="large"></ion-icon>
+        </ng-template>
+    </NoticeBar>
+    <ion-row class="ion-padding">
+        <ion-col size="3" *ngFor="let m of menuList;let i=index"
+                 color="primary" class="menu ion-text-center" routerLink="{{m.url}}">
+            <img [src]="m.img" [ngStyle]="{'animation': animation(i)}">
+            <ion-label><h3>{{m.name}}</h3></ion-label>
+        </ion-col>
+    </ion-row>
+
+    <ion-row class="ad-box">
+        <img src="assets/img/home/ad2.jpg"/>
+    </ion-row>
+    <div class="hot-title">
+        <img src="assets/img/home/hot.jpg">
+    </div>
+    <ion-row class="hot-row">
+        <app-img-skeleton class="img-placeholder" *ngIf="!hotList"></app-img-skeleton>
+        <div class="hot">
+            <ul>
+                <li *ngFor="let g of hotList" routerLink="/pages/goods-detail/{{g?.id}}">
+                    <ion-card class="ion-no-padding ion-no-margin">
+                        <img [src]="g?.img">
+                        <p class="ion-text-nowrap" style="overflow: hidden">{{g?.name}}</p>
+                        <div [ngStyle]="g?.rank<3?{'background-image': 'url(assets/img/home/rank1.png)'}:{'background-image': 'url(assets/img/home/rank3.png)'}">
+                            <p>{{g?.rank}}</p></div>
+                    </ion-card>
+
+                </li>
+            </ul>
+        </div>
+    </ion-row>
+    <ion-row class="ad-box">
+        <img src="assets/img/home/ad1.jpg"/>
+    </ion-row>
+    <ion-row>
+        <div class="hot-title">
+            <img src="assets/img/home/guess.jpg">
+        </div>
+    </ion-row>
+    <ion-row class="guess-b">
+        <ion-segment *ngIf="subCateList" [(ngModel)]="defaultSubCate" (ionChange)="changed($event)">
+            <ion-segment-button *ngFor="let m of subCateList;let i=index" [value]="m?.id" (click)="select(i)">
+                <ion-label>{{m?.name}}</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+        <ion-col size="6" *ngFor="let g of subGoodList">
+            <div [routerLink]="'/pages/goods-detail/'+g?.id">
+                <app-img-skeleton class="guess-img" [src]="g?.img"></app-img-skeleton>
+                <p class="ion-text-center">{{g?.name}}</p>
+                <p class="price">$ {{g?.price}}</p>
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-content>

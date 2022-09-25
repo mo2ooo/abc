@@ -1,0 +1,95 @@
+app-goods-detail {
+  .swiper-pagination-bullet {
+    opacity: 1 !important;
+  }
+
+  .img-placeholder {
+    min-height: 450px;
+    max-height: 450px;
+  }
+
+  .title1 {
+    text-align: center;
+    color: #222;
+    font-size: 1.1rem;
+    line-height: 20px;
+  }
+
+  ion-label {
+    color: var(--my-custom-title);
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .line {
+    width: 55px;
+    height: 1px;
+    background: #ccc;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px;
+  }
+
+
+  .detail {
+    padding: 8px;
+    text-align: center;
+    background: #f4f4f4;
+    color: #b2b2b2;
+    font-size: 1.1rem;
+    display: block;
+  }
+
+  .btnSize {
+    color: black;
+    width: 60px;
+  }
+
+  .active {
+    background: var(--ion-color-primary);
+    color: white !important;
+  }
+
+  .box {
+    width: 100%;
+    height: auto;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .desc {
+    padding: 10px;
+
+    p {
+      font-size: 15px;
+      line-height: 24px;
+      margin: 0 0 10px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      line-height: 20px;
+      color: #222;
+      font-weight: 600;
+    }
+  }
+
+  iframe {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    left: 0;
+    position: absolute;
+  }
+}
+
+ion-modal.cart-modal {
+  background-color: rgba(0, 0, 0, .2) !important;
+  transition: opacity .55s ease-in-out;
+  padding-top: 70vh;
+}
+
+

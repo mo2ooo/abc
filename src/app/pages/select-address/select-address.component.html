@@ -1,0 +1,26 @@
+<ion-content class="ion-no-padding">
+    <ion-card>
+        <ion-card-content class="ion-no-padding">
+            <ion-radio-group [(ngModel)]="selectAddress">
+                <ion-item lines="none" *ngFor="let address of addressList">
+                    <ion-radio [value]="address.id"></ion-radio>
+                    <ion-label>
+                        <p class="title">{{address.nickName}}({{address.phone}})</p>
+                        <h3>{{address.street}}</h3>
+                        <p class="title">{{address.address}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-radio-group>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <ion-row>
+        <ion-col class="ion-no-margin ion-no-padding" size="6">
+            <ion-button expand="block" color="medium" (click)="dismiss()">Cancel</ion-button>
+        </ion-col>
+        <ion-col class="ion-no-margin ion-no-padding" size="6">
+            <ion-button expand="block" color="danger" (click)="onFilter()">Ok</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

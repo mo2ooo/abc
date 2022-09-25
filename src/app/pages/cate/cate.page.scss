@@ -1,0 +1,69 @@
+app-cate {
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cate-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100%;
+    line-height: 51px;
+    text-decoration: inherit;
+    font-size: 15px;
+    background-color: #f2f2f2;
+    overflow: hidden;
+  }
+
+
+  .cate-left-item {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 51px;
+    line-height: 51px;
+    text-align: center;
+    text-decoration: inherit;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .selected {
+    background-color: #fff;
+    height: 51px;
+    line-height: 51px;
+    color: var(--ion-color-primary);
+  }
+
+  .selected-line {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    border-left: 3px solid var(--ion-color-danger);
+  }
+
+  .cate-right {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    width: calc(100% - 80px);
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    padding-top: 0;
+
+  }
+
+  ion-thumbnail {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+  }
+
+}

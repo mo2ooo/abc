@@ -1,0 +1,28 @@
+<ion-content class="ion-no-padding">
+    <ion-card>
+        <ion-card-content class="ion-no-padding">
+            <ion-radio-group [(ngModel)]="selectPay">
+                <ion-item lines="none" *ngFor="let pay of payList">
+                    <ion-radio [value]="pay.id"></ion-radio>
+                    <ion-thumbnail class="gImg">
+                        <img [src]="pay?.img">
+                    </ion-thumbnail>
+                    <ion-label class="ion-padding-start">
+                        <h2 class="title ion-text-wrap">{{pay?.name}}</h2>
+                        <p class="price">min({{pay?.minAmount}})-max({{pay?.maxAmount}})</p>
+                    </ion-label>
+                </ion-item>
+            </ion-radio-group>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <ion-row>
+        <ion-col class="ion-no-margin ion-no-padding" size="6">
+            <ion-button expand="block" color="medium" (click)="dismiss()">Cancel</ion-button>
+        </ion-col>
+        <ion-col class="ion-no-margin ion-no-padding" size="6">
+            <ion-button expand="block" color="danger" (click)="onFilter()">Ok</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Favorite</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <app-skeleton [rows]="6" *ngIf="!goodList"></app-skeleton>
+    <ion-row *ngIf="goodList">
+        <ion-col size="6" *ngFor="let g of goodList;let i=index"
+                 [ngStyle]="{'animation':animation(i)}" class="ion-text-center">
+            <ion-card class="ion-no-margin ion-no-padding">
+                <app-img-skeleton [src]="g?.img"></app-img-skeleton>
+                <ion-label class="ion-text-center">
+                    <p>{{g?.name}}</p>
+                </ion-label>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>

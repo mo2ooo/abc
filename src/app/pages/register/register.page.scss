@@ -1,0 +1,63 @@
+app-register {
+  ion-toolbar {
+    --ion-toolbar-background: transparent !important;
+    --border-width: 0px !important;
+  }
+
+  ion-content {
+    --background: url('../../../assets/img/home/login.jpg') no-repeat fixed!important;
+  }
+  ion-card {
+    --background: #847f7f7d !important;
+  }
+
+  ion-row {
+    background: transparent !important;
+    margin: 8px !important;
+  }
+
+  .logo {
+    width: 120px;
+    margin-top: 20px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  ion-item {
+    border-radius: 10px;
+    padding: 10px;
+    --border-color: white !important;
+  }
+
+  .slide-top {
+    -webkit-animation: slide-in-blurred-top 2.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    animation: slide-in-blurred-top 2.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  }
+
+  .slide-bottom0 {
+    -webkit-animation: slide-in-blurred-bottom 0.1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    animation: slide-in-blurred-bottom 0.1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  }
+
+  .slide-bottom1 {
+    -webkit-animation: slide-in-blurred-bottom 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    animation: slide-in-blurred-bottom 0.5s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  }
+
+  .slide-bottom2 {
+    -webkit-animation: slide-in-blurred-bottom 0.9s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    animation: slide-in-blurred-bottom 0.9s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  }
+
+  .slide-bottom3 {
+    -webkit-animation: slide-in-blurred-bottom 1.3s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    animation: slide-in-blurred-bottom 1.3s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  }
+
+  .slide-bottom4 {
+    -webkit-animation: slide-in-blurred-bottom 1.7s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    animation: slide-in-blurred-bottom 1.7s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  }
+}

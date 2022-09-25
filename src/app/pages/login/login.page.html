@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+        </ion-buttons>
+        <ion-title></ion-title>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/register">
+                <ion-icon slot="icon-only" color="light" name="md-person-add"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div>
+        <div>
+            <ion-row class="ion-padding-bottom ion-margin ion-text-center">
+                <ion-col>
+                    <img class="logo slide-top" src="assets/img/home/logo.png"/>
+                </ion-col>
+            </ion-row>
+            <form [formGroup]="loginForm">
+                <ion-card>
+                    <ion-item lines="none" class="slide1">
+                        <ion-icon name="md-person" color="twitter"></ion-icon>
+                        <ion-input formControlName="email" type="text"></ion-input>
+                    </ion-item>
+                    <ion-text class="ion-text-center ion-padding-start" color="danger"
+                              *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+                        please enter a valid email
+                    </ion-text>
+                    <ion-item lines="none" class="slide2">
+                        <ion-icon name="lock" color="twitter"></ion-icon>
+                        <ion-input formControlName="pwd" type="password"></ion-input>
+                    </ion-item>
+                    <ion-text class="ion-text-center ion-padding-start" color="danger"
+                              *ngIf="!loginForm.controls.pwd.valid  && loginForm.controls.pwd.dirty">
+                        password Length at 6-15
+                    </ion-text>
+                </ion-card>
+            </form>
+            <ion-row class="slide3">
+                <ion-col class="ion-text-center" size="12">
+                    <ion-button type="submit" color="tertiary" expand="block" [disabled]="!loginForm.valid"
+                                (click)="login()">Login
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+
+</ion-content>

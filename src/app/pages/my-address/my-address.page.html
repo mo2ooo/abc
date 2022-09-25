@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons>
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Address</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="aForm">
+        <ion-item class="ion-no-padding">
+            <ion-label class="ion-padding-start" position="fixed" color="medium">name:</ion-label>
+            <ion-input formControlName="name" placeholder="NickName" type="text"></ion-input>
+        </ion-item>
+        <ion-text class="ion-text-center ion-padding-start" color="danger"
+                  *ngIf="!aForm.controls.name.valid  && aForm.controls.name.dirty">
+            Username Length at 3-15
+        </ion-text>
+        <ion-item class="ion-no-padding">
+            <ion-label class="ion-padding-start" position="fixed" color="medium">phone:</ion-label>
+            <ion-input formControlName="phone" type="phone"></ion-input>
+        </ion-item>
+        <ListItem
+                Picker
+                [data]="data"
+                [extra]="name1"
+                [arrow]="'horizontal'"
+                [mask]="true"
+                [title]="'Areas'"
+                [(ngModel)]="value1"
+                (ngModelChange)="onOk($event)"
+                (onDismiss)="onDismiss()"
+                [ngModelOptions]="{standalone: true}"
+        >
+            address:
+        </ListItem>
+        <ion-item class="ion-no-padding">
+            <ion-label class="ion-padding-start" position="fixed" color="medium">street:</ion-label>
+            <ion-textarea formControlName="street"></ion-textarea>
+        </ion-item>
+        <ion-button class="ion-margin" color="warning" expand="block" [disabled]="!aForm.valid" (click)="save()">save
+        </ion-button>
+    </form>
+
+</ion-content>

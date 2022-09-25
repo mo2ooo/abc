@@ -1,0 +1,30 @@
+app-tabs {
+
+  ion-tab-bar{
+    --background: var(--ion-color-primary);
+  }
+  ion-tab-button {
+    --background: var(--ion-color-primary);
+    color: var(--my-custom-tab-button);
+  }
+
+  .tab-selected {
+    color: var(--ion-color-primary-contrast);
+  }
+
+  ion-fab-button {
+    height: 60px;
+    width: 60px;
+
+    ion-icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .fab-bottom {
+    margin-bottom: constant(safe-area-inset-bottom);
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+}
+

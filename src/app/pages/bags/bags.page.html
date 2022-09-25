@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Bags</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item-sliding *ngFor="let item of bagList">
+        <ion-item class="ion-no-padding" lines="none">
+            <ion-checkbox color="warning" [(ngModel)]="item.isCheck" (ionChange)="checkSum()"></ion-checkbox>
+            <ion-thumbnail>
+                <app-img-skeleton [src]="item?.img"></app-img-skeleton>
+            </ion-thumbnail>
+            <ion-label>
+                <h2 class="ion-text-wrap">{{item?.name}}</h2>
+                <p class="ion-padding-top">Size:{{item?.size}}</p>
+                <p class="ion-padding-top">$ {{item?.price}}</p>
+            </ion-label>
+            <div class="bottom-box">
+                <Stepper [value]="item?.num" [(ngModel)]="item.num" [min]="1" [showNumber]="true"
+                         (onChange)="change($event,item)"></Stepper>
+            </div>
+        </ion-item>
+        <ion-item-options>
+            <ion-item-option color="danger" (click)="delete(item)">
+                Delete
+            </ion-item-option>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-content>
+<ion-footer *ngIf="bagList?.length>0">
+    <ion-list-header class="ion-no-padding">
+        <ion-checkbox color="warning" [(ngModel)]="allCheck" (ionChange)="checkAll()"></ion-checkbox>
+        <ion-label class="ion-text-left" color="medium">total:${{total}}</ion-label>
+        <ion-button color="tertiary" expand="block" routerLink="/pages/settle">settle</ion-button>
+    </ion-list-header>
+</ion-footer>

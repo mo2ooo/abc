@@ -1,0 +1,102 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons>
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Edit Order</ion-title>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/pages/my-address">
+                <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content class="ion-no-padding">
+            <ion-item lines="none" class="ion-no-padding" *ngFor="let good of bagList">
+                <ion-thumbnail class="gImg">
+                    <img [src]="good.img">
+                </ion-thumbnail>
+                <ion-label class="ion-padding-start">
+                    <h2 class="title ion-text-wrap">{{good.name}}</h2>
+                    <p class="price">$ {{good.price}}</p>
+                    <p class="title">Size {{good.size}}</p>
+                </ion-label>
+                <ion-label position="fixed" class="num ion-text-right"
+                           style="max-width: 30px!important;min-width: 30px!important;">
+                    ✕{{good.num}}</ion-label>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content class="ion-no-padding">
+            <ion-item lines="none" class="ion-no-padding">
+                <ion-label class="ion-padding-start" position="fixed">Name</ion-label>
+                <ion-label class="ion-text-wrap">{{addressModel?.nickName}}({{addressModel?.phone}})</ion-label>
+            </ion-item>
+            <ion-item lines="none" class="ion-no-padding">
+                <ion-label class="ion-padding-start" position="fixed">Address</ion-label>
+                <ion-label class="ion-text-wrap" (click)="onAddress()">{{addressModel?.address}}</ion-label>
+                <ion-icon color="medium" name="arrow-dropup-circle" (click)="onAddress()"></ion-icon>
+            </ion-item>
+            <ion-item lines="none" class="ion-no-padding">
+                <ion-label class="ion-padding-start" position="fixed">Street</ion-label>
+                <ion-label class="ion-text-wrap">{{addressModel?.street}}</ion-label>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content class="ion-no-padding">
+            <ion-item lines="none" class="ion-no-padding">
+                <ion-label class="ion-padding-start" position="fixed">Pay</ion-label>
+                <ion-label (click)="onPay()">{{payModel?.name}}</ion-label>
+                <ion-icon color="medium" name="arrow-dropup-circle" (click)="onPay()"></ion-icon>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+
+    <ion-card>
+        <ion-card-content class="ion-no-padding">
+            <ion-item lines="none">
+                <ion-label position="fixed">Express</ion-label>
+                <ion-label class="ion-text-wrap" (click)="onExpress()">{{expressModel?.name}}</ion-label>
+                <ion-icon color="medium" name="arrow-dropup-circle" (click)="onExpress()"></ion-icon>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="fixed">Discount</ion-label>
+                <ion-label class="ion-text-wrap" (click)="onDiscount()">{{discountModel?.desc}}</ion-label>
+                <ion-icon color="medium" name="arrow-dropup-circle" (click)="onDiscount()"></ion-icon>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content class="ion-no-padding">
+            <ion-item lines="none">
+                <ion-label position="fixed">Amount</ion-label>
+                <ion-label class="price ion-text-right">$ {{amount}}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="fixed">Express</ion-label>
+                <ion-label class="price ion-text-right">$ {{expressModel === null ? 0 : expressModel?.cost}}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label position="fixed">Discount</ion-label>
+                <ion-label class="price ion-text-right">
+                    $ {{ discountModel?.discountAmount}}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label>Total</ion-label>
+                <ion-label class="price ion-text-right">
+                    $ {{(expressModel?.cost + amount + discountModel?.discountAmount).toFixed(2)}}</ion-label>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-button class="ion-margin" color="warning" expand="block" (click)="onSubmit()">Submit</ion-button>
+</ion-content>

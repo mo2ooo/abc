@@ -1,0 +1,45 @@
+app-settle {
+  ion-content {
+    --background: var(--my-custom-background);
+  }
+
+  .gImg {
+    width: 100px;
+    height: auto;
+    padding: 5px;
+  }
+
+  ion-label {
+    font-size: 0.9rem !important;
+  }
+
+  ion-card {
+    -webkit-margin-start: 8px !important;
+    margin-inline-start: 8px !important;
+    -webkit-margin-end: 8px !important;
+    margin-inline-end: 8px !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+}
+
+ion-modal.express-modal {
+  background-color: rgba(0, 0, 0, .2) !important;
+  transition: opacity .55s linear;
+  padding-top: 56vh;
+}
+
+ion-modal.address-modal {
+  background-color: rgba(0, 0, 0, .2) !important;
+  transition: opacity .55s linear;
+  padding-top: 53vh;
+}
+
+ion-modal.pay-modal {
+  background-color: rgba(0, 0, 0, .2) !important;
+  transition: opacity .55s linear;
+  padding-top: 50vh;
+}
+
+

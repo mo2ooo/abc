@@ -1,0 +1,31 @@
+app-order-detail {
+  ion-content {
+    --background: var(--my-custom-background);
+  }
+
+  .am-steps-item-title {
+    color: #666 !important;
+    font-size: 13px !important;
+  }
+
+  ion-label {
+    font-size: 0.9rem !important;
+  }
+
+  .box {
+    display: inline-block;
+
+    p {
+      display: inline-block;
+    }
+  }
+
+  .p-right {
+    position: absolute;
+    right: 10px;
+  }
+
+  img {
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,136 @@
+app-home {
+  .banner-placeholder {
+    max-height: 180px;
+  }
+
+  .img-placeholder {
+    max-height: 200px;
+    min-height: 200px;
+  }
+
+  .logo {
+    width: 44px;
+    background: white;
+    border-radius: 50%;
+    margin-top: 5px;
+  }
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    opacity: .9;
+  }
+
+  .am-notice-bar-icon {
+    margin-left: 0px !important;
+  }
+
+  .am-notice-bar {
+    background-color: #161315 !important;
+  }
+
+  .marquee {
+    color: #f1edea !important;
+  }
+
+  .menu {
+    img {
+      width: 50px;
+      padding: 5px;
+      border-radius: 50%;
+      background: blanchedalmond;
+    }
+  }
+
+  .ad-box {
+    height: auto;
+    margin: 1px 1px 3px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .hot-title {
+    width: 100%;
+    height: 45px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .hot-row {
+    height: 248px;
+    overflow: hidden;
+  }
+
+  .hot {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    overflow-y: hidden;
+    padding-top: 3px;
+    position: absolute;
+
+    li {
+      display: inline-block;
+      list-style: none;
+      width: 150px;
+      text-align: center;
+      margin-left: 7px;
+
+      ion-card {
+        overflow: hidden;
+
+        img {
+          width: 150px;
+          height: auto;
+        }
+      }
+
+      div {
+        position: absolute;
+        top: 10px;
+        margin-left: 1px;
+        width: 27px;
+        height: 27px;
+        background-position: 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+
+  // hide scrollbar
+  ion-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  ion-segment {
+    height: 35px;
+  }
+
+  .guess-b {
+    margin-top: 5px;
+    background: var(--my-custom-background);
+
+    div {
+      background: var(--ion-toolbar-color);
+      border-radius: 10px;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, .12);
+
+      img {
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .guess-img {
+    min-height: 260px;
+  }
+}

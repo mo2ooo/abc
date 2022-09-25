@@ -1,0 +1,28 @@
+<ion-content>
+    <ion-card>
+        <ion-card-content class="ion-no-padding">
+            <ion-radio-group [(ngModel)]="selectExpress">
+                <ion-item lines="none" *ngFor="let express of expressList">
+                    <ion-radio [value]="express.id"></ion-radio>
+                    <ion-label>
+                        <h3>{{express.shortName}}</h3>
+                        <p class="title ion-text-wrap">{{express.name}}</p>
+                    </ion-label>
+                    <ion-label style="max-width: 20px;width: 20px;">
+                        <p class="price">{{express.cost}}$</p>
+                    </ion-label>
+                </ion-item>
+            </ion-radio-group>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <ion-row>
+        <ion-col class="ion-no-margin ion-no-padding" size="6">
+            <ion-button expand="block" color="medium" (click)="dismiss()">Cancel</ion-button>
+        </ion-col>
+        <ion-col class="ion-no-margin ion-no-padding" size="6">
+            <ion-button expand="block" color="danger" (click)="onFilter()">Ok</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

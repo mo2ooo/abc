@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true"
+             (ionScroll)="onScroll($event)">
+    <ng-template [ngIf]="list" [ngIfElse]="load">
+        <ion-card *ngFor="let notice of list;let i=index" [ngStyle]="{'animation': animation(i)}">
+            <ion-card-content>
+                <ion-icon name="text" color="favorite" size="large"></ion-icon>
+                <ion-label class="ion-margin-start" color="twitter">
+                    {{notice?.description}}
+                </ion-label>
+            </ion-card-content>
+        </ion-card>
+    </ng-template>
+    <ng-template #load>
+        <app-skeleton rows="6"></app-skeleton>
+    </ng-template>
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="isEnd">
+        <ion-fab-button [ngClass]="isEnd?'fade-in-right':'fade-out-right'" (click)="goTop()">
+            <ion-icon name="md-arrow-up"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>
